@@ -2,6 +2,8 @@
 
 RTL-to-GDSII implementation of a UART controller (baud-rate generator, transmitter and receiver) using OpenROAD-flow-scripts on the Nangate45 library.
 
+![Layout](layout/layout.png)
+
 ## Design
 - Top module `uart_top` connects `baud_gen` (parameter DIV = 5208, 9600 baud at 50 MHz), `uart_tx` and `uart_rx`.
 - Ports: `clk`, `reset`, `start`, `data_in[7:0]`, `rx`, `tx`, `busy`, `data_out[7:0]`, `done`.
