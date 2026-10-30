@@ -39,8 +39,13 @@ An earlier sweep with a 0.6 ns I/O delay was limited by the clock-to-output path
 - `layout/uart_top.gds` final layout
 
 ## Reproduce
-Copy `rtl/*.v` to `flow/designs/src/uart_ctrl/` and `config/*` to `flow/designs/nangate45/uart_ctrl/` inside OpenROAD-flow-scripts, then run:
+In a terminal with the OpenROAD environment loaded:
+```bash
+./run_flow.sh      # copies the design into OpenROAD-flow-scripts and runs RTL to GDSII
+./run_sweep.sh     # optional clock-period sweep
+```
+Set `ORFS=/path/to/OpenROAD-flow-scripts` if it is not in your home folder. Manual steps: copy `rtl/*.v` to `flow/designs/src/uart_ctrl/` and `config/*` to `flow/designs/nangate45/uart_ctrl/`, then run
 `make DESIGN_CONFIG=./designs/nangate45/uart_ctrl/config.mk`
 
 ## Limitations
-Nangate45 is an academic 45 nm library, not a production process. Results are from OpenROAD estimates, not signoff timing. The design was not verified here beyond the original testbench in the Verilog-Projects repo.
+Nangate45 is an academic 45 nm library, not a production process. Results are from OpenROAD estimates, not signoff timing. This repository contains no functional testbench for `uart_top`; a loopback testbench (tx to rx) is planned.
